@@ -18,6 +18,16 @@ contract SimpleNFT is ERC721URIStorage {
 
   constructor() ERC721("SimpleNFT", "SNFT") {}
   
+  function getSalePrice(uint256 nftId) external view returns (uint) {
+    NFTSale storage nftForSale = _listed[nftId];
+    return nftForSale.price;
+  }
+
+  function markAsSold(uint256 nftId) public {
+    NFTSale storage nftForSale = _listed[nftId];
+    nftForSale.isForSale = false;
+  }
+
   function mintNft(string memory tokenURI, uint price, address custodian) public {
     uint256 newItemId = _tokenIds.current();
 
@@ -30,4 +40,8 @@ contract SimpleNFT is ERC721URIStorage {
 
     _tokenIds.increment();
   }
+
+  function transferNft(address currentOwner, address newOwner, uint256 nftId) external {
+		safeTransferFrom(currentOwner, newOwner, nftId);
+	}
 }
