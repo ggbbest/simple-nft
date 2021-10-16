@@ -6,11 +6,11 @@ import "./SimpleNFT.sol";
 contract SimpleNFTCustodian {
   SimpleNFT public simpleNft;
 
-	function setSimpleNftAddress(SimpleNFT instanceAddress) public {
-		simpleNft = instanceAddress;
-	}
+  function setSimpleNftAddress(SimpleNFT instanceAddress) public {
+    simpleNft = instanceAddress;
+  }
 
-	function buyNft(uint256 nftId) public payable {
+  function buyNft(uint256 nftId) public payable {
     uint salePrice = simpleNft.getSalePrice(nftId);
     uint amountPaid = msg.value;
 

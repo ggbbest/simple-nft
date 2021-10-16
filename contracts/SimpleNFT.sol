@@ -42,6 +42,6 @@ contract SimpleNFT is ERC721URIStorage {
   }
 
   function transferNft(address currentOwner, address newOwner, uint256 nftId) external {
-		safeTransferFrom(currentOwner, newOwner, nftId);
-	}
+    safeTransferFrom(currentOwner, newOwner, nftId);
+  }
 }
